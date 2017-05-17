@@ -1,0 +1,31 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: black;
+  color: white;
+}
+.main-container{
+	margin-bottom: 100px;
+}
+.person{
+  width:600px;
+  margin-top:5px;
+  color:#444;
+  font:1.0em/1.5 Arial,sans-serif;
+}
+.person img{
+  width:120px;
+  height:120px;
+  float:right;
+  margin-left:20px;
+  background-color:#eee;
+  padding:7px;
+  -moz-border-radius:3px;
+}

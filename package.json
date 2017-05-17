@@ -1,0 +1,33 @@
+{
+  "name": "lab02-1412551-1412574",
+  "version": "1.0.0",
+  "description": "chat app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UDPT-2017/lab02-1412551-1412574.git"
+  },
+  "author": "ndtich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UDPT-2017/lab02-1412551-1412574/issues"
+  },
+  "homepage": "https://github.com/UDPT-2017/lab02-1412551-1412574#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.2",
+    "method-override": "^2.3.8",
+    "morgan": "^1.8.1",
+    "mysql": "^2.13.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}
