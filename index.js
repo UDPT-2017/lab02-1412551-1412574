@@ -40,6 +40,10 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 app.set('views', path.resolve('views'));
 
+
+
+
+
 // required for passport
 app.use(session({
 	secret: 'vidyapathaisalwaysrunning',

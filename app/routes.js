@@ -1,5 +1,19 @@
 // app/routes.js
 module.exports = function(app, passport) {
+	//config
+	var dateFormat = require('dateformat');
+	var moment = require('moment');
+	var momentNow = moment();
+	var formatted = momentNow.format('YYYY-MM-DD HH:mm:ss');
+	console.log(formatted);
+
+	var mysql = require('mysql');
+	var bcrypt = require('bcrypt-nodejs');
+	var dbconfig = require('../config/database');
+	var connection = mysql.createConnection(dbconfig.connection);
+
+	var connectionString = connection.query('USE ' + dbconfig.database);
+
 
 	// =====================================
 	// HOME PAGE (with login links) ========
@@ -10,6 +24,7 @@ module.exports = function(app, passport) {
 	app.get('/home', function(req, res) {
 		res.render('home.hbs'); 
 	});
+
 
 	// =====================================
 	// LOGIN ===============================
@@ -38,6 +53,8 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
+
+
 	// =====================================
 	// SIGNUP ==============================
 	// =====================================
@@ -55,6 +72,7 @@ module.exports = function(app, passport) {
 	}));
 
 	
+
 	// =====================================
 	// LOGOUT ==============================
 	// =====================================
@@ -63,82 +81,124 @@ module.exports = function(app, passport) {
 		res.redirect('/');
 	});
 
+	
 
 	//===========================
 	// Mailbox===================
 	//===========================
 	app.get('/mailbox', isLoggedIn, function(req, res) {
-
-		// render the page and pass in any flash data if it exists
-		res.render('mailbox.hbs');
+		connection.query("SELECT m.*,u.username FROM mail m, users u WHERE m.user_receive = "+ req.user.id + " and m.user_send = u.id order by m.created_at desc", function(err, rows) {
+            if(err)
+                res.end();
+            
+        	var countall = 0;
+        	countall=rows.length;
+        	res.render('mailbox.hbs',{
+				mail:rows,
+				countall: countall,
+			});
+		});
 	});
+
+
 
 	//===========================
 	// Sentbox===================
 	//===========================
 	app.get('/sentbox', isLoggedIn, function(req, res) {
 
-		// render the page and pass in any flash data if it exists
-		res.render('sentbox.hbs');
+		connection.query("SELECT m.*,u.username FROM mail m, users u WHERE m.user_send = "+ req.user.id + " and m.user_receive = u.id order by m.created_at desc", function(err, rows) {
+            if(err)
+                res.end();
+        	var countall = 0;
+        	countall=rows.length;
+        	res.render('sentbox.hbs',{
+				mail:rows,
+				countall: countall,
+			});
+		});
 	});
+
+
 
 	//===========================
 	// Maildetail===================
 	//===========================
-	app.get('/maildetail', isLoggedIn, function(req, res) {
-
-		// render the page and pass in any flash data if it exists
-		res.render('maildetail.hbs');
+	app.get('/maildetail/:id', isLoggedIn, function(req, res) {
+		connection.query("SELECT m.*,u.username,u.name FROM mail m, users u WHERE m.id = "+ req.params.id + " and m.user_send = u.id", function(err, result) {
+            if(err)
+                res.end();
+            if(result[0].isread == 0){
+	            connection.query("UPDATE mail  SET isread = 1, readtime = '"+ formatted + "' WHERE id = "+ req.params.id, function(err, result){
+	            	if(err)
+	            		res.end();
+	           });
+	        }
+        	res.render('maildetail.hbs',{
+				mail:result[0],
+			});
+        });
+        	
 	});
+
+	//===========================
+	// Mailsentdetail===================
+	//===========================
+	app.get('/mailsentdetail/:id', isLoggedIn, function(req, res) {
+		connection.query("SELECT m.*,u.username,u.name FROM mail m, users u WHERE m.id = "+ req.params.id + " and m.user_receive = u.id", function(err, result) {
+            if(err)
+                res.end();
+        	res.render('mailsentdetail.hbs',{
+				mail:result[0],
+			});
+        });
+        	
+	});
+
+
 
 	//===========================
 	// Compose===================
 	//===========================
 	app.get('/compose', isLoggedIn, function(req, res) {
 
+		connection.query("SELECT u.id, u.username FROM users u, friend f WHERE (f.idUser = " + req.user.id+" and f.idFriend  = u.id) or (f.idFriend = " + req.user.id+" and f.idUser  = u.id)", function(err, rows) {
+            if(err)
+                res.end();
 		// render the page and pass in any flash data if it exists
-		res.render('compose.hbs');
+			res.render('compose.hbs',{
+				friends:rows
+			});
+		});
+	});
+
+	app.post('/compose', isLoggedIn, function (req, res){
+    	connection.query("INSERT INTO mail (title, content, created_at, user_send, user_receive) values ('"+req.body.title+"','"+req.body.content+"','"+formatted+"',"+req.user.id+","+req.body.user_receive+")", function(err, result) {
+    		if(err)
+    			res.end();
+			// res.send("Add friend is success!");
+			res.redirect('/sentbox');
+        		
+		})
 	});
 
 
 	//===========================
-	// Users===================
+	// users===================
 	//===========================
-	/* begin test     */
-
-	var mysql = require('mysql');
-	var bcrypt = require('bcrypt-nodejs');
-	var dbconfig = require('../config/database');
-	var connection = mysql.createConnection(dbconfig.connection);
-
-	var connectionString = connection.query('USE ' + dbconfig.database);
-
-	//conect user
-	// var user = {
-	// 	Getuser: function(callback){
-	// 		    connection.query("SELECT username FROM users", function(err, result, fields){
-	// 			if(err) throw err;
-	//          	console.log(JSON.stringify(result));
-	// 	     	callback(err, result.rows, fields);}
-	//         });
-	// 	}
-	// };
-	//////get friends
-
-	//get user
 	app.get('/users', isLoggedIn, function (req, res) {
 
 		 connection.query("select * from users u1 where u1.id not in (SELECT u.id FROM users u, friend f WHERE (f.idUser = " + req.user.id+" and f.idFriend  = u.id) or (f.idFriend = " + req.user.id+" and f.idUser  = u.id)) and u1.id != " + req.user.id+"", function(err, rows) {
              if(err)
                 res.end();
-             connection.query("SELECT * FROM users u, friend f WHERE (f.idUser = " + req.user.id+" and f.idFriend  = u.id) or (f.idFriend = " + req.user.id+" and f.idUser  = u.id)", function(err, row) {
+             connection.query("SELECT u.* FROM users u, friend f WHERE (f.idUser = " + req.user.id+" and f.idFriend  = u.id) or (f.idFriend = " + req.user.id+" and f.idUser  = u.id)", function(err, row) {
             	if(err)
                  	res.end();
 	             res.render('users.hbs',{users:rows,
 	             	friend:row
 	             });
-	          })
-         })
+	          });
+         });
 
 	});
 	//post user--Add user on listfriend
@@ -166,6 +226,7 @@ module.exports = function(app, passport) {
 	 */
 	});
 
+	//post user--remove user on listfriend
 	app.post('/removefriend', isLoggedIn, function (req, res){
     	connection.query("DELETE FROM friend WHERE (idUser = "+req.user.id+" and idFriend = "+req.body.id+") or (idUser = "+req.body.id+" and idFriend = "+req.user.id+")", function(err, result) {
     		if(err)
@@ -175,12 +236,6 @@ module.exports = function(app, passport) {
         		
 		})
 	});
- /* end test*/
-	/*app.get('/users', isLoggedIn, function(req, res) {
-		// render the page and pass in any flash data if it exists
-		res.render('users.hbs');
-
-	});*/
 
 	//===========================
 	// About===================
@@ -192,7 +247,9 @@ module.exports = function(app, passport) {
 	});
 
 	
-	//
+	//===========================
+	// List Friends===================
+	//===========================
 	app.get('/listfriend', isLoggedIn, function(req, res) {
 		connection.query("SELECT * FROM users u, friend f WHERE (f.idUser = " + req.user.id+" and f.idFriend  = u.id) or (f.idFriend = " + req.user.id+" and f.idUser  = u.id)", function(err, rows) {
             if(err)
@@ -200,7 +257,7 @@ module.exports = function(app, passport) {
 		// render the page and pass in any flash data if it exists
 			res.render('listfriend.hbs',{friends:rows
 			});
-		})
+		});
 	});
 };
 
