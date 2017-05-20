@@ -1,131 +1,653 @@
 <div class="container main-container">
-<div class="row " style="padding-top:40px;">
+<div class="row">
     <ul class="breadcrumb">
         <li><a href="home"><i class="fa fa-home"></i></a></li>
-        <li><a href="">Mailbox</a></li>
+        <li><a href="">Mail</a></li>
     </ul>
-    <h3 class="text-center" >MAILBOX</h3>
-    <br /><br />
-    <div class="col-md-12">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                RECENT CHAT HISTORY
+
+    <h3 class="text-center" >MAIL</h3>
+    
+
+        <div class="mail-env">
+            <!-- compose new email button -->
+            <div class="mail-sidebar-row visible-xs">
+                <a href="/compose" class="btn btn-success btn-icon btn-block">
+                    New message
+                    <i class="entypo-pencil"></i>
+                </a>
             </div>
-            <div class="panel-body">
-                <ul class="media-list">
-
-                                    <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle " src="assets/img/user.png" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-              
-              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                    Duis vel condimentum massa.
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                    <br />
-                                                   <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
-                                                    <hr />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                     <li class="media">
-
-                                                                        <div class="media-body">
-
-                                                                            <div class="media">
-                                                                                <a class="pull-left" href="#">
-                                                                                    <img class="media-object img-circle " src="assets/img/user.gif" />
-                                                                                </a>
-                                                                                <div class="media-body" >
-                                                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                              
-                                              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                                                    Duis vel condimentum massa.
-                                                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                                                    <br />
-                                                                                   <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
-                                                                                    <hr />
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </li>
-     <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle " src="assets/img/user.png" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-              
-              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                    Duis vel condimentum massa.
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                    <br />
-                                                   <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
-                                                    <hr />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-     <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle " src="assets/img/user.gif" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-              
-              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                    Duis vel condimentum massa.
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                    <br />
-                                                   <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
-                                                    <hr />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                </ul>
-             </div>
+            
+            
+            <!-- Mail Body -->
+            <div class="mail-body">
+                
+                <div class="mail-header">
+                    <!-- title -->
+                    <h3 class="mail-title">
+                        Inbox
+                        <span class="count"></span>
+                    </h3>
+                    
+                </div>
+                
+                
+                <!-- mail table -->
+                <table class="table mail-table">
+                    <!-- mail table header -->
+                    <thead>
+                        <tr>
+                            <th width="5%">
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </th>
+                            <th colspan="4">
+                                
+                                <div class="mail-select-options">Mark as Read</div>
+                                
+                                <div class="mail-pagination" colspan="2">
+                                    <strong>1-30</strong> <span>of 789</span>
+                                    
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-sm btn-white"><i class="entypo-left-open"></i></a>
+                                        <a href="#" class="btn btn-sm btn-white"><i class="entypo-right-open"></i></a>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    
+                    <!-- email list -->
+                    <tbody>
+                        <tr class="unread"><!-- new email class: unread -->
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star stared">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Facebook</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Reset your account password
+                                </a>
+                            </td>
+                            <td class="col-options">
+                                <a href="mailbox-message.html"><i class="entypo-attach"></i></a>
+                            </td>
+                            <td class="col-time">13:52</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Google AdWords</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Google AdWords: Ads not serving
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">09:27</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Apple.com</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    <span class="label label-danger">Business</span>
+                                    Your apple account ID has been accessed from un-familiar location.
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">Today</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">World Weather Online</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Over Throttle Alert
+                                </a>
+                            </td>
+                            <td class="col-options">
+                                <a href="mailbox-message.html"><i class="entypo-attach"></i></a>
+                            </td>
+                            <td class="col-time">Yesterday</td>
+                        </tr>
+                        
+                        <tr class="unread">
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Dropbox</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Complete your Dropbox setup!
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">4 Dec</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star stared">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Arlind Nushi</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    <span class="label label-warning">Friends</span>
+                                    Work progress for Neon Project
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">28 Nov</td>
+                        </tr>
+                        
+                        <tr class="unread"><!-- new email class: unread -->
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star stared">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Jose D. Gardner</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Regarding to your website issues.
+                                </a>
+                            </td>
+                            <td class="col-options">
+                                <a href="mailbox-message.html"><i class="entypo-attach"></i></a>
+                            </td>
+                            <td class="col-time">22 Nov</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Aurelio D. Cummins</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Steadicam operator
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">15 Nov</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Filan Fisteku</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    You are loosing clients because your website is not responsive.
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">02 Nov</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Instagram</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Instagram announces the new video uploadin feature.
+                                </a>
+                            </td>
+                            <td class="col-options">
+                                <a href="mailbox-message.html"><i class="entypo-attach"></i></a>
+                            </td>
+                            <td class="col-time">26 Oct</td>
+                        </tr>
+                        
+                        <tr class="unread">
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">James Blue</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    <span class="label label-info">Sports</span>
+                                    There are 20 notifications
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">18 Oct</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">SomeHost</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Bugs in your system.
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">01 Sep</td>
+                        </tr>
+                        
+                        <tr class="unread"><!-- new email class: unread -->
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star stared">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Facebook</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Reset your account password
+                                </a>
+                            </td>
+                            <td class="col-options">
+                                <a href="mailbox-message.html"><i class="entypo-attach"></i></a>
+                            </td>
+                            <td class="col-time">13:52</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Google AdWords</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Google AdWords: Ads not serving
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">09:27</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Apple.com</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    <span class="label label-danger">Business</span>
+                                    Your apple account ID has been accessed from un-familiar location.
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">Today</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">World Weather Online</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Over Throttle Alert
+                                </a>
+                            </td>
+                            <td class="col-options">
+                                <a href="mailbox-message.html"><i class="entypo-attach"></i></a>
+                            </td>
+                            <td class="col-time">Yesterday</td>
+                        </tr>
+                        
+                        <tr class="unread">
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Dropbox</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Complete your Dropbox setup!
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">4 Dec</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star stared">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Arlind Nushi</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    <span class="label label-warning">Friends</span>
+                                    Work progress for Neon Project
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">28 Nov</td>
+                        </tr>
+                        
+                        <tr class="unread"><!-- new email class: unread -->
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star stared">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Jose D. Gardner</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Regarding to your website issues.
+                                </a>
+                            </td>
+                            <td class="col-options">
+                                <a href="mailbox-message.html"><i class="entypo-attach"></i></a>
+                            </td>
+                            <td class="col-time">22 Nov</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Aurelio D. Cummins</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Steadicam operator
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">15 Nov</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Filan Fisteku</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    You are loosing clients because your website is not responsive.
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">02 Nov</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">Instagram</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Instagram announces the new video uploadin feature.
+                                </a>
+                            </td>
+                            <td class="col-options">
+                                <a href="mailbox-message.html"><i class="entypo-attach"></i></a>
+                            </td>
+                            <td class="col-time">26 Oct</td>
+                        </tr>
+                        
+                        <tr class="unread">
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">James Blue</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    <span class="label label-info">Sports</span>
+                                    There are 20 notifications
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">18 Oct</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </td>
+                            <td class="col-name">
+                                <a href="#" class="star">
+                                    <i class="entypo-star"></i>
+                                </a>
+                                <a href="mailbox-message.html" class="col-name">SomeHost</a>
+                            </td>
+                            <td class="col-subject">
+                                <a href="mailbox-message.html">
+                                    Bugs in your system.
+                                </a>
+                            </td>
+                            <td class="col-options"></td>
+                            <td class="col-time">01 Sep</td>
+                        </tr>
+                    </tbody>
+                    
+                    <!-- mail table footer -->
+                    <tfoot>
+                        <tr>
+                            <th width="5%">
+                                <div class="checkbox checkbox-replace">
+                                    <input type="checkbox" />
+                                </div>
+                            </th>
+                            <th colspan="4">
+                                
+                                <div class="mail-pagination" colspan="2">
+                                    <strong>1-30</strong> <span>of 789</span>
+                                    
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-sm btn-white"><i class="entypo-left-open"></i></a>
+                                        <a href="#" class="btn btn-sm btn-white"><i class="entypo-right-open"></i></a>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="mail-sidebar">
+                
+                <!-- compose new email button -->
+                <div class="mail-sidebar-row hidden-xs">
+                    <a href="/compose" class="btn btn-success btn-icon btn-block">
+                        New message
+                        <i class="entypo-pencil"></i>
+                    </a>
+                </div>
+                
+                <!-- menu -->
+                <ul class="mail-menu">
+                    <li class="active">
+                        <a href="/mailbox">
+                            <span class="badge badge-danger pull-right">6</span>
+                            Inbox
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sentbox">
+                            <span class="badge badge-gray pull-right">1</span>
+                            Sent
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                
+                <div class="mail-distancer"></div>
+                
+                
+                
+            </div>
         </div>
-    <div class="panel-footer">
-                <div class="input-group">
-                     <span class="input-group-btn">
-                     <div class="col-md-4">
-                         <div class="col-md-5">
-                           <a href="/newmessage">
-                            <button class="btn btn-info" type="button">New Message</button>
-                           </a>
-                         </div> 
-                         <div class="col-md-5">
-                           <a href="/listfriend">
-                             <button class="btn btn-info" type="button">List Friends</button>
-                           </a> 
-                         </div>
-                         <div class="col-md-2"><button class="btn btn-info" type="button"> Sent Message</button></div> 
-                     </div>
-                          
-                       
-                    </span>
-             </div>
-        </div>
-    </div>
-    </div>
+
+    
+</div>
+
 </div>

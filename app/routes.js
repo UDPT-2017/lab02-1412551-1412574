@@ -73,6 +73,33 @@ module.exports = function(app, passport) {
 		res.render('mailbox.hbs');
 	});
 
+	//===========================
+	// Sentbox===================
+	//===========================
+	app.get('/sentbox', isLoggedIn, function(req, res) {
+
+		// render the page and pass in any flash data if it exists
+		res.render('sentbox.hbs');
+	});
+
+	//===========================
+	// Maildetail===================
+	//===========================
+	app.get('/maildetail', isLoggedIn, function(req, res) {
+
+		// render the page and pass in any flash data if it exists
+		res.render('maildetail.hbs');
+	});
+
+	//===========================
+	// Compose===================
+	//===========================
+	app.get('/compose', isLoggedIn, function(req, res) {
+
+		// render the page and pass in any flash data if it exists
+		res.render('compose.hbs');
+	});
+
 
 	//===========================
 	// Users===================
