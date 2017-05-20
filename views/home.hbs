@@ -1,7 +1,7 @@
 <!-- Main Container  -->
 <div class="main-container container">
 	<ul class="breadcrumb">
-		<li><a href="home"><i class="fa fa-home"></i></a></li>
+		<li><a href="/home"><i class="fa fa-home"></i></a></li>
 	</ul>
 	
 	<div class="row">
@@ -10,13 +10,13 @@
 		        <h1><span class="fa fa-lock"></span>Wellcome to my app</h1>
 				{{#if user}}
 					<p>Hello <b>{{user.name}}</b></p>
-					<a href="mailbox" class="btn btn-default"><span class="fa fa-user"></span>Mail</a>
-			        <a href="logout" class="btn btn-default"><span class="fa fa-user"></span>Logout</a>
+					<a href="/mailbox" class="btn btn-default"><span class="fa fa-user"></span>Mail</a>
+			        <a href="/logout" class="btn btn-default"><span class="fa fa-user"></span>Logout</a>
 				{{else}}
 			        <p>Login or Register with:</p>
 
-			        <a href="login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-			        <a href="signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+			        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+			        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
 		        {{/if}}
 		    </div>
 		</div>

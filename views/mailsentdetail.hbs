@@ -1,0 +1,131 @@
+<div class="container main-container">
+<div class="row">
+    <ul class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home"></i></a></li>
+        <li><a href="">Mail</a></li>
+    </ul>
+    <h3 class="text-center" >MAIL</h3>
+    
+
+        <div class="mail-env">
+            <!-- compose new email button -->
+            <div class="mail-sidebar-row visible-xs">
+                <a href="/compose" class="btn btn-success btn-icon btn-block">
+                    New message
+                    <i class="entypo-pencil"></i>
+                </a>
+            </div>
+            
+            
+            <!-- Mail Body -->
+            <div class="mail-body">
+                
+                <div class="mail-header">
+                    <!-- title -->
+                    <div class="mail-title">
+                        {{mail.title}}
+                    </div>
+                    
+                    <!-- links -->
+                    <div class="mail-links">
+                    
+                        <a href="#" class="btn btn-default">
+                            <i class="entypo-print"></i>
+                        </a>
+                    
+                        <a href="#" class="btn btn-default">
+                            <i class="entypo-trash"></i>
+                        </a>
+                        
+                        <a class="btn btn-primary btn-icon">
+                            Reply
+                            <i class="entypo-reply"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+                
+                <div class="mail-info">
+                    
+                    <div class="mail-sender dropdown">
+                        
+                        <a href="">
+                            <img src="/assets/img/user.png" class="img-circle" width="30" /> 
+                            to <span>{{mail.name}}</span>
+                            ({{mail.username}})
+                        </a>
+                        
+                    </div>
+                    
+                    <div class="mail-date">
+                        {{mail.created_at}}
+                    </div>
+                    
+                </div>
+                
+                <div class="mail-text">
+                    
+                    {{mail.content}}
+                    
+                </div>
+                
+                
+                
+                <div class="mail-reply">
+                    
+                    <div class="fake-form">
+                        <div>
+                            <a href="#">Reply</a> this message...
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="mail-sidebar">
+                
+                <!-- compose new email button -->
+                <div class="mail-sidebar-row hidden-xs">
+                    <a href="/compose" class="btn btn-success btn-icon btn-block">
+                        New message
+                        <i class="entypo-pencil"></i>
+                    </a>
+                </div>
+                
+                <!-- menu -->
+                <ul class="mail-menu">
+                    <li class="active">
+                        <a href="/mailbox">
+                            <span class="badge badge-danger pull-right"></span>
+                            Inbox
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/sentbox">
+                            <span class="badge badge-gray pull-right"></span>
+                            Sent
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/listfriend">
+                            List Friends
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                
+                <div class="mail-distancer"></div>
+                
+                
+                
+            </div>
+        </div>
+
+    
+</div>
+</div>
