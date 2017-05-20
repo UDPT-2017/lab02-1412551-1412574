@@ -6,261 +6,78 @@
     </ul>
     <h3 class="text-center" >MAILBOX</h3>
     <br /><br />
-    <div class="col-md-8">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                RECENT CHAT HISTORY
-            </div>
-            <div class="panel-body">
-<ul class="media-list">
-
-                                    <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle " src="assets/img/user.png" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-              
-              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                    Duis vel condimentum massa.
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                    <br />
-                                                   <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
-                                                    <hr />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-     <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle " src="assets/img/user.gif" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-              
-              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                    Duis vel condimentum massa.
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                    <br />
-                                                   <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
-                                                    <hr />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-     <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle " src="assets/img/user.png" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-              
-              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                    Duis vel condimentum massa.
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                    <br />
-                                                   <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
-                                                    <hr />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-     <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle " src="assets/img/user.gif" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-              
-              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                    Duis vel condimentum massa.
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                    <br />
-                                                   <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
-                                                    <hr />
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                </ul>
-            </div>
-            <div class="panel-footer">
-                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter Message" />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-info" type="button">SEND</button>
-                                    </span>
-                                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-2"></div>
+    <div class="col-md-10 ">
           <div class="panel panel-primary">
             <div class="panel-heading">
-               ONLINE USERS
+               USERS
             </div>
             <div class="panel-body">
                 <ul class="media-list">
-
+                               {{#each users}}
                                     <li class="media">
 
                                         <div class="media-body">
-
+                    
                                             <div class="media">
                                                 <a class="pull-left" href="#">
                                                     <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
                                                 </a>
+                                                <form action="/addfriend" method="post">
                                                 <div class="media-body" >
-                                                    <h5>Alex Deo | User </h5>
-                                                    
-                                                   <small class="text-muted">Active From 3 hours</small>
+                                                   <input class="idText" type="hidden" name="id" value="{{id}}">
+                                                   <h5>{{name}}</h5>
+                                                   <small class="text-muted">{{username}}</small>
+                                                   <small class="text-muted">- {{phone}}</small>
+                                                   <div class="pull-right">
+                                                        <button button-add="addfriend_btn" type="submit" class = "btn btn-success " data-toggle="tooltip" data-placement="top" title="Add Friends" id="addfriend">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                        </button>
+                                                    </div>
                                                 </div>
+                                                </form>
+                                           
+
                                             </div>
 
                                         </div>
                                     </li>
-     <li class="media">
+                                {{/each}}
+                             {{#each friend}}
+                                  <li class="media">
 
-                                        <div class="media-body">
+                                            <div class="media-body">
+                        
+                                                <div class="media">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
+                                                    </a>
+                                                    <form action="/removefriend" method="post">
+                                                    <div class="media-body" >
+                                                       <h5>{{name}}</h5>
+                                                       <input class="idText" type="hidden" name="id" value="{{id}}">
+                                                       <small class="text-muted">{{username}}</small>
+                                                       <small class="text-muted">- {{phone}}</small>
+                                                       <div class="pull-right">
+                                                          <button button-remove="removeFriend" type="submit" class = "btn btn-danger " data-toggle="tooltip" data-placement="top" title="Romove Friends" >
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                          </button>
+                                                          <button button-send="sendMail"  type="button" class="btn btn-success" data-toggle="modal" data-target="#enquirypopup" title="Send Mail">
+                                                              <span class="glyphicon glyphicon-envelope one"></span>
+                                                          </button>
+                                                       </div>
+                                                    </div>
+                                                    </form>
 
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    <h5>Jhon Rexa | User </h5>
-                                                    
-                                                   <small class="text-muted">Active From 3 hours</small>
                                                 </div>
+
                                             </div>
-
-                                        </div>
-                                    </li>
-                    <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    <h5>Alex Deo | User </h5>
-                                                    
-                                                   <small class="text-muted">Active From 3 hours</small>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                    <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    <h5>Jhon Rexa | User </h5>
-                                                    
-                                                   <small class="text-muted">Active From 3 hours</small>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                     <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    <h5>Alex Deo | User </h5>
-                                                    
-                                                   <small class="text-muted">Active From 3 hours</small>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-     <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    <h5>Jhon Rexa | User </h5>
-                                                    
-                                                   <small class="text-muted">Active From 3 hours</small>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                    <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    <h5>Alex Deo | User </h5>
-                                                    
-                                                   <small class="text-muted">Active From 3 hours</small>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                    <li class="media">
-
-                                        <div class="media-body">
-
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                    <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.gif" />
-                                                </a>
-                                                <div class="media-body" >
-                                                    <h5>Jhon Rexa | User </h5>
-                                                    
-                                                   <small class="text-muted">Active From 3 hours</small>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                </ul>
-                </div>
+                                        </li>
+                          {{/each}}
+                    
+                </ul>
             </div>
+        </div>
         
     </div>
 </div>
