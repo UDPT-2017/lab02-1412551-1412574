@@ -1,0 +1,51 @@
+<div class="container main-container">
+<div class="row " style="padding-top:40px;">
+    <ul class="breadcrumb">
+        <li><a href="home"><i class="fa fa-home"></i></a></li>
+        <li><a href="">Users</a></li>
+    </ul>
+    <h3 class="text-center" >List Friends</h3>
+    <br /><br />
+    <div class="col-md-2"></div>
+    <div class="col-md-10 ">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+               List Friends
+            </div>
+            <div class="panel-body">
+                <ul class="media-list">
+                        
+                             {{#each friends}}
+                                  <li class="media">
+
+                                            <div class="media-body">
+                        
+                                                <div class="media">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="media-object img-circle" style="max-height:40px;" src="assets/img/user.png" />
+                                                    </a>
+                                                   
+                                                    <div class="media-body" >
+                                                       <h5>{{name}}</h5>
+                                                       <small class="text-muted">{{username}}</small>
+                                                       <small class="text-muted">- {{phone}}</small>
+                                                       <div class="pull-right">
+                                                          <button button-send="sendMail"  type="button" class="btn btn-success" data-toggle="modal" data-target="#enquirypopup" title="Send Mail">
+                                                              <span class="glyphicon glyphicon-envelope one"></span>
+                                                          </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </li>
+                             {{/each}}
+                      
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>

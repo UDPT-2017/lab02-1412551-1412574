@@ -3,8 +3,10 @@ module.exports = {
     'connection': {
         'host': 'localhost',
         'user': 'root',
-        'password': 'root'
+        'password': ''
     },
 	'database': 'messenger',
-    'users_table': 'users'
+    'users_table': 'users',
+    'friends_table': 'Friends',
+    'list_mail': 'Mail'
 };

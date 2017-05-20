@@ -23,7 +23,7 @@ module.exports = function(app, passport) {
 
 	// process the login form
 	app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/home', // redirect to the secure profile section
+            successRedirect : '/mailbox', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
 		}),
@@ -77,11 +77,83 @@ module.exports = function(app, passport) {
 	//===========================
 	// Users===================
 	//===========================
-	app.get('/users', isLoggedIn, function(req, res) {
+	/* begin test     */
 
+	var mysql = require('mysql');
+	var bcrypt = require('bcrypt-nodejs');
+	var dbconfig = require('../config/database');
+	var connection = mysql.createConnection(dbconfig.connection);
+
+	var connectionString = connection.query('USE ' + dbconfig.database);
+
+	//conect user
+	// var user = {
+	// 	Getuser: function(callback){
+	// 		    connection.query("SELECT username FROM users", function(err, result, fields){
+	// 			if(err) throw err;
+	//          	console.log(JSON.stringify(result));
+	// 	     	callback(err, result.rows, fields);}
+	//         });
+	// 	}
+	// };
+	//////get friends
+
+	//get user
+	app.get('/users', isLoggedIn, function (req, res) {
+
+		 connection.query("select * from users u1 where u1.id not in (SELECT u.id FROM users u, friend f WHERE (f.idUser = " + req.user.id+" and f.idFriend  = u.id) or (f.idFriend = " + req.user.id+" and f.idUser  = u.id)) and u1.id != " + req.user.id+"", function(err, rows) {
+             if(err)
+                res.end();
+             connection.query("SELECT * FROM users u, friend f WHERE (f.idUser = " + req.user.id+" and f.idFriend  = u.id) or (f.idFriend = " + req.user.id+" and f.idUser  = u.id)", function(err, row) {
+            	if(err)
+                 	res.end();
+	             res.render('users.hbs',{users:rows,
+	             	friend:row
+	             });
+	          })
+         })
+
+	});
+	//post user--Add user on listfriend
+	app.post('/addfriend', isLoggedIn, function (req, res){
+    	connection.query("INSERT INTO friend (idUser, idFriend) values ("+req.user.id+","+req.body.id+")", function(err, result) {
+    		if(err)
+    			res.end();
+			// res.send("Add friend is success!");
+			res.redirect('/users');
+        		
+		})
+
+		/*connection.query("INSERT INTO friends (username, name, phone ) values ("+req.body.user.username+","+req.body.user.name+","+req.body.user.phone+")", function(err, rows) {
+			if(err)
+                res.end();
+         	connection.query("SELECT * FROM  friends f WHERE f.username = "+req.body.user.username+"", function(err, row) {
+         		if(err)
+                res.end();
+            	connection.query("INSERT INTO chitietusers (idUser, idFriend) values ("+req.user.id+","+row[0].ID+")", function(message) {
+            		res.send("Add friend is success!");
+            	})
+         	})
+
+			})
+	 */
+	});
+
+	app.post('/removefriend', isLoggedIn, function (req, res){
+    	connection.query("DELETE FROM friend WHERE (idUser = "+req.user.id+" and idFriend = "+req.body.id+") or (idUser = "+req.body.id+" and idFriend = "+req.user.id+")", function(err, result) {
+    		if(err)
+    			res.end();
+			// res.send("Add friend is success!");
+			res.redirect('/users');
+        		
+		})
+	});
+ /* end test*/
+	/*app.get('/users', isLoggedIn, function(req, res) {
 		// render the page and pass in any flash data if it exists
 		res.render('users.hbs');
-	});
+
+	});*/
 
 	//===========================
 	// About===================
@@ -90,6 +162,18 @@ module.exports = function(app, passport) {
 
 		// render the page and pass in any flash data if it exists
 		res.render('about.hbs');
+	});
+
+	
+	//
+	app.get('/listfriend', isLoggedIn, function(req, res) {
+		connection.query("SELECT * FROM users u, friend f WHERE (f.idUser = " + req.user.id+" and f.idFriend  = u.id) or (f.idFriend = " + req.user.id+" and f.idUser  = u.id)", function(err, rows) {
+            if(err)
+                res.end();
+		// render the page and pass in any flash data if it exists
+			res.render('listfriend.hbs',{friends:rows
+			});
+		})
 	});
 };
 
@@ -113,3 +197,4 @@ function notLoggedIn(req, res, next) {
 	// if they aren't redirect them to the home page
 	res.redirect('/');
 }
+
