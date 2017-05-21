@@ -29,6 +29,7 @@ Yêu cầu **bắt buộc**
 * [x] Nhấn nút "new message" sẽ chuyển sang giao diện cho phép người dùng gửi tin nhắn cho người dùng trong danh sách bạn bè. Người gửi phải nằm trong danh sách bạn bè và cho phép người dùng chọn qua combobox.(**1412551**)
 * [x] Nhấn "sent" sẽ chuyển sang giao diện hiển thị danh sách tin nhắn đã gửi. Mỗi tin nhắn cần hiện thời gian người nhận đã đọc.(**1412551**)
 * [x] Trang users cho phép xem danh sách người dùng có trong hệ thống và phải có nút "add" với những người dùng chưa là bạn để thêm vào danh sách bạn bè.(**1412574**)
+* [x] Trang listfriend hiển thị danh sách bạn bè của người dùng.(**1412574**)
 * [x] Trang about thể hiện thông tin nhóm thực hiện đề tài.(**1412574**)
 * [ ] Nhấn "refresh" để cập nhật danh sách tin nhắn mới nhất (ko nạp lại dữ liệu trên trang).(**MSSV**)
 * [ ] Cho phép người dùng layout tin nhắn bằng markdown. (**MSSV**)
@@ -52,7 +53,7 @@ Liệt kê các **yêu cầu nâng cao** đã thực hiện:
 
 Link ảnh GIF demo ứng dụng:
 
-![Video Walkthrough](demo.gif)
+![Video Walkthrough](demomail.gif)
 
 Tạo ảnh GIF với chương trình [LiceCap](http://www.cockos.com/licecap/).
 
