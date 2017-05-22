@@ -6,7 +6,7 @@ Thành viên:
 * [x] **1412551** Nguyễn Đang Tích (ndtich)
 * [x] **1412574** Đặng Văn Trí (DangVanTri)
 
-URL: **URL hosting của bài tập**
+URL: **lab2-tich-tri.herokuapp.com**
 
 ## Yêu cầu
 
@@ -19,7 +19,7 @@ Yêu cầu **GIT**
 * [ ] Sử dụng GIT theo Gitflow Workflow.
 
 Yêu cầu **bắt buộc**
-* [ ] Website layout theo kiến trúc MVC với các thành phần được tách thành nhiều module theo hướng dẫn. (**MSSV**)
+* [x] Website layout theo kiến trúc MVC với các thành phần được tách thành nhiều module theo hướng dẫn. (**1412551**)
 * [x] Trang web được thiết kế sẽ bao gồm các trang: home, messages, users, about. (**1412551**)
 * [x] Cho phép người dùng biết họ đang ở trang nào (sử dụng breadcrumb, highlight navigation bar,...). (**1412551**)
 * [x] Cho phép người dùng đăng ký tài khoản bằng các thông tin: email, password, name, phone.(**1412551**)
@@ -35,7 +35,7 @@ Yêu cầu **bắt buộc**
 * [ ] Cho phép người dùng layout tin nhắn bằng markdown. (**MSSV**)
 
 Yêu cầu **không bắt buộc**:
-* [ ] Chuyển nút "add" thành nút "remove" sau khi thêm bạn thành công.(**MSSV**)
+* [x] Chuyển nút "add" thành nút "remove" sau khi thêm bạn thành công.(**MSSV**)
 * [ ] Tự động refresh lại danh sách tin nhắn đã nhận sau 1 khoảng thời gian nhất định và có hiển thị đã refresh danh sách tin nhắn cách đây bao lâu.(**MSSV**)
 * [ ] Cuối danh sách tin nhắn sẽ có "load more" để nạp thêm 10 tin nhắn tiếp theo.(**MSSV**)
 * [ ] Khi người dùng kéo đến cuối danh sách sẽ tự động nạp thêm 10 tin nhắn tiếp theo.(**MSSV**)
